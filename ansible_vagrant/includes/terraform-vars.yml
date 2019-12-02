@@ -1,0 +1,20 @@
+---
+
+- name: ensure vars.tfvars exists
+  copy:
+    content: ""
+    dest: /home/vagrant/terraform/vars.tfvars
+    force: no
+
+- name: add predefined variables
+  blockinfile:
+    path: "/home/vagrant/terraform/vars.tfvars"
+    block: |
+      # this file is managed by Ansible
+      # all changes will be overwritten
+
+      prefix = "{{ tf_prefix }}"
+
+    marker: "# {mark} add variables from custom_vars.yml"
+
+...

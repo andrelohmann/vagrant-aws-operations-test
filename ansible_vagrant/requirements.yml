@@ -1,0 +1,6 @@
+---
+- andrelohmann.root_colored_prompt
+- andrelohmann.awscli
+- andrelohmann.terraform
+- andrelohmann.golang
+...

@@ -1,0 +1,43 @@
+---
+
+- hosts: all
+  become: true
+  become_method: sudo
+
+  vars:
+    golang_version: '1.11'
+    golang_gopath: go
+    golang_additional_libraries:
+    - golang.org/x/tools/cmd/goimports
+    - github.com/andrelohmann/awspause
+    - github.com/andrelohmann/awslock
+    golang_users:
+    - root
+    - vagrant
+    terraform_version: '0.12.16'
+    aws_user: vagrant # (Linux User who should use aws cli)
+
+  pre_tasks:
+  - name: Include custom_vars.yml
+    include_vars:
+      file: custom_vars.yml
+
+  roles:
+  - andrelohmann.root_colored_prompt
+  - andrelohmann.golang
+  - andrelohmann.awscli
+  - andrelohmann.terraform
+
+  tasks:
+
+  - name: include the ssh key management
+    include_tasks: includes/manage-ssh-key.yml
+
+  # terraform credentials and aws resources
+  - name: create the terraform provider config
+    include_tasks: includes/terraform-provider.yml
+
+  - name: set the terraform vars
+    include_tasks: includes/terraform-vars.yml
+
+...

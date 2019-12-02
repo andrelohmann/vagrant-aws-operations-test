@@ -1,0 +1,14 @@
+/ansible_vagrant/roles
+/ansible_vagrant/custom_vars.yml
+/ansible_vagrant/custom_vars_*
+/terraform/provider.tf
+/terraform/.terraform*
+/terraform/vars.tfvars
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+/.idea
+/nbproject
+.vagrant
+.DS_Store
+*.retry
+*.log

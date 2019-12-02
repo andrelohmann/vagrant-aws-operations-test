@@ -1,0 +1,7 @@
+---
+  - name: create terraform provider file
+    template:
+      src: terraform.provider.tf.j2
+      dest: "/home/vagrant/terraform/provider.tf"
+
+...
