@@ -15,14 +15,14 @@ This vagrant machine will evaluate the availability of all neccessary dependenci
 ### VirtualBox
 
   * install the latest virtualbox from oracle repositories (https://www.virtualbox.org/wiki/Downloads)
-  * if you are on a linux distro, follow the instaructions to add the oracle repo
+  * if you are on a linux distro, follow the instructions to add the oracle repo
   * install the latest Oracle VM VirtualBox Extension Pack
 
 ### Vagrant
 
 #### cli
 
-  * Install the lates vagrant (https://www.vagrantup.com/downloads.html)
+  * Install the latest vagrant (https://www.vagrantup.com/downloads.html)
 
 #### plugins
 
@@ -33,15 +33,17 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-sshfs
 ```
 
+these pluins should get installed automatically on a "vagrant up", if that fails anyways, please manually install the plugins by entering the commands
+
 ##### Windows
 
-If you are on Microsoft Window, you need to install  install openssh.
+If you are on Microsoft Window, you need to install openssh.
 
 https://docs.microsoft.com/de-de/windows-server/administration/openssh/openssh_install_firstuse
 
 ### AWS
 
-  * Create IAM User (with FullAdmin Permissions preferred)
+  * Create IAM User (with FullAdmin permissions preferred)
   * fetch Programmatic Access Credentials
 
 ## usage
@@ -72,7 +74,7 @@ and do a aws-cli "hello world", to check if the credentials are working
 aws ssm list-documents
 ```
 
-no error should be generated, insted you should see a big json list of documents
+no errors should be generated, insted you should see a big json list of documents
 
 #### terraform
 

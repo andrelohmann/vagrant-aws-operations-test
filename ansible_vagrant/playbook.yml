@@ -14,7 +14,7 @@
     golang_users:
     - root
     - vagrant
-    terraform_version: '0.12.16'
+    terraform_version: '0.12.17'
     aws_user: vagrant # (Linux User who should use aws cli)
 
   pre_tasks:
