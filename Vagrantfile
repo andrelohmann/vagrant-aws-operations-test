@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "ansible_vagrant", "/vagrant/ansible_vagrant", type: "sshfs", create: true, owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=775"]
+  config.vm.synced_folder "packer", "/home/vagrant/packer", type: "sshfs", create: true, owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=775"]
   config.vm.synced_folder "terraform", "/home/vagrant/terraform", type: "sshfs", create: true, owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=775"]
 
   # auto update guest additions

@@ -1,0 +1,59 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{ user `region` }}",
+      "instance_type": "t2.micro",
+      "source_ami": "{{user `windows_ami`}}",
+      "ami_name": "Packer Showcase Windows {{user `prefix`}} {{timestamp}}",
+      "tags": {
+        "ShowCasePrefix": "{{user `prefix`}}"
+      },
+      "user_data_file": "./userdata.ps1",
+      "communicator": "winrm",
+      "associate_public_ip_address": true,
+      "winrm_username": "Administrator",
+      "winrm_port": 5986,
+      "winrm_timeout": "15m",
+      "winrm_use_ssl": true,
+      "winrm_insecure": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "inline": [
+        "Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole",
+        "Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServer"
+      ]
+    },
+    {
+      "type": "windows-restart",
+      "restart_check_command": "powershell -command \"&amp; {Write-Output 'Machine restarted.'}\""
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
+        "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+      ]
+    },
+    {
+      "script": "./sample_script.ps1",
+      "type": "powershell",
+      "environment_vars": [
+        "VAR1=A$Dollar",
+        "VAR2=A`Backtick",
+        "VAR3=A'SingleQuote",
+        "VAR4=A\"DoubleQuote"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+  ]
+}

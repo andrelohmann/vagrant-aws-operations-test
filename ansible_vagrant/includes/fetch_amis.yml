@@ -1,0 +1,21 @@
+---
+
+- name: fetch latest ubuntu ami id
+  command: aws ec2 describe-images --owners 099720109477 --filters 'Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-????????' 'Name=state,Values=available' --query 'reverse(sort_by(Images, &CreationDate))[:1].ImageId' --output text
+  become: yes
+  become_user: vagrant
+  register: _latest_ubuntu_ami
+
+- debug:
+    msg: "{{_latest_ubuntu_ami }}"
+
+- name: fetch latest windows ami id
+  command: aws ec2 describe-images --owners amazon --filters 'Name=name,Values=Windows_Server-2016-English-Full-Base-*' 'Name=state,Values=available' --query 'reverse(sort_by(Images, &CreationDate))[:1].ImageId' --output text
+  become: yes
+  become_user: vagrant
+  register: _latest_windows_ami
+
+- debug:
+    msg: "{{_latest_windows_ami }}"
+
+...

@@ -76,6 +76,18 @@ aws ssm list-documents
 
 no errors should be generated, insted you should see a big json list of documents
 
+#### packer
+
+change to the packer directory
+
+```
+vagrant@ubuntu-bionic:~$ cd terraform
+```
+
+there you will find two subdirectories for a windows and a ubuntu demo
+
+follow the path on [packer/README.md](packer/README.md)
+
 #### terraform
 
 change to the terraform directory
@@ -86,4 +98,4 @@ vagrant@ubuntu-bionic:~$ cd terraform
 
 follow the path on [terraform/README.md](terraform/README.md)
 
-don't forget to run the destroy command after your test has finished!
+don't forget to run the destroy command after your test has finished, also manually delete your packer AMIs!

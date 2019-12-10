@@ -1,0 +1,38 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "{{user `region`}}",
+    "source_ami": "{{user `ubuntu_ami`}}",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "Packer Showcase Ubuntu {{user `prefix`}} {{timestamp}}",
+    "tags": {
+      "ShowCasePrefix": "{{user `prefix`}}"
+    }
+  }],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./welcome.txt",
+      "destination": "/home/ubuntu/"
+    },
+    {
+      "type": "shell",
+      "inline":[
+          "ls -al /home/ubuntu",
+          "cat /home/ubuntu/welcome.txt"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "./example.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+  ]
+}

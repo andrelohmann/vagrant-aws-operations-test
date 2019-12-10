@@ -13,7 +13,7 @@
       # this file is managed by Ansible
       # all changes will be overwritten
 
-      prefix = "{{ tf_prefix }}"
+      prefix = "{{ prefix }}"
 
     marker: "# {mark} add variables from custom_vars.yml"
 

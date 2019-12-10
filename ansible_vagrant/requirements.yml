@@ -1,7 +1,7 @@
 ---
 - andrelohmann.root_colored_prompt
 - andrelohmann.awscli
-- andrelohmann.terraform
 - andrelohmann.packer
+- andrelohmann.terraform
 - andrelohmann.golang
 ...
