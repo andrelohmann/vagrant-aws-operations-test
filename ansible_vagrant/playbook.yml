@@ -15,6 +15,7 @@
     - root
     - vagrant
     terraform_version: '0.12.17'
+    packer_version: '1.4.5'
     aws_user: vagrant # (Linux User who should use aws cli)
 
   pre_tasks:
@@ -27,6 +28,7 @@
   - andrelohmann.golang
   - andrelohmann.awscli
   - andrelohmann.terraform
+  - andrelohmann.packer
 
   tasks:
 
