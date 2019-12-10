@@ -3,11 +3,11 @@
  */
 
 variable "region" {
-  type = "string"
+  type = string
   description = "The Aws region"
 }
 
 variable "prefix" {
-  type = "string"
+  type = string
   description = "The prefix, set for resources"
 }
