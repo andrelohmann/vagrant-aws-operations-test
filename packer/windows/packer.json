@@ -3,7 +3,14 @@
     {
       "type": "amazon-ebs",
       "region": "{{ user `region` }}",
-      "instance_type": "t2.micro",
+      "instance_type": "t3.large",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 40,
+          "delete_on_termination": true
+        }
+      ],
       "source_ami": "{{user `windows_ami`}}",
       "ami_name": "Packer Showcase Windows {{user `prefix`}} {{timestamp}}",
       "tags": {
@@ -20,6 +27,11 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "file",
+      "source": "FirefoxSetup72.0.2.msi",
+      "destination": "C:\\FirefoxSetup72.0.2.msi"
+    },
     {
       "type": "powershell",
       "inline": [
